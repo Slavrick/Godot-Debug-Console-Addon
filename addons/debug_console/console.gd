@@ -50,9 +50,24 @@ var console_commands = {
 	"list" : list_command,
 	"anchor" : anchor_command,
 	"reset" : reset_command,
+	"help" : help_command,
+}
+var help_text = {
+	"set" : "sets a property for the console, valid properties are width, height, text (textsize), dimension, color, background. 
+			Usage: set <property> <value1> <value2> ... ",
+	"clear" : "clears command history. Usage: clear",
+	"echo" : "repeats text back to you (mainly was used for debugging). Usage: echo <text>",
+	"list" : "lists console commands and user scripts. Usage: list",
+	"anchor" : "changes where the console is anchored. valid anchor locations are top_left (tl), top_right (tr), bottom_right, bottom_left
+			Usage: anchor <anchor location> ",
+	"reset" : "resets all properties in the console. Usage: reset",
+	"help" : "displays help and usage for a command. Usage: help <commnad> ",
 }
 
+
 func _init():
+	if not (EngineDebugger.is_active() || OS.is_debug_build()):
+		queue_free()
 	if not InputMap.has_action("open_debug_console"):
 		InputMap.add_action("open_debug_console")
 		var event := InputEventKey.new()
@@ -244,6 +259,18 @@ func reset_command(_args):
 	clear_commands()
 	set_properties()
 	return "Reset properties"
+
+func help_command( args ):
+	if args.size() < 2:
+		return "Usage: help <command>"
+	var command_to_help = args[1]
+	if help_text.has(command_to_help):
+		return help_text[command_to_help]
+	var script_path = scripts_folder + command_to_help + ".gd"
+	if ResourceLoader.exists(script_path):
+		var command_script = load(script_path).new()
+		return command_script.help()
+	return "could not find command: " + command_to_help
 
 func set_console_text():
 	$VBoxContainer/ScrollContainer/RichTextLabel.clear()

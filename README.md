@@ -22,9 +22,15 @@ In game you will be able to open the debug console. you can use several built in
 
 The power of this addon is the ability to write scripts that will be ran. Each script will be called by the deploy command which should be static and require two parameters. will recieve an array of arguments that you sent it in the console and the root node (this is needed, as from a static function you cannot get the root node or anything in the scene tree, may change this in the future). You are expected to return a string which displays the status of what the command did.
 
-In the future I will add a help command which tells what the command does.
+The script should also have a help command which returns usage information.
+
+in order to call the script, type a command that is the name of the script minus the file extension.
+
+    ex: sethealth.gd you might call sethealth (hp value)
 
 
+
+This addon is configured to only work on debug builds, and in the editor so that players shouldn't have access to the console.
 
 
 
