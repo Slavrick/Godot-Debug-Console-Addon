@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://6vdp30xexbw7"]
+
+[ext_resource type="Script" path="res://addons/debug_console/console.gd" id="1_3p6l5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8br5q"]
+bg_color = Color(0.196078, 0.196078, 0.196078, 0.803922)
+
+[node name="Consol" type="PanelContainer"]
+visible = false
+z_index = 200
+offset_right = 500.0
+offset_bottom = 500.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_8br5q")
+script = ExtResource("1_3p6l5")
+console_style_box = SubResource("StyleBoxFlat_8br5q")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/ScrollContainer"]
+custom_minimum_size = Vector2(500, 1000)
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 1, 0.184314, 1)
+theme_override_font_sizes/normal_font_size = 15
+text = "
+"
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+placeholder_text = "Enter Command"
+caret_blink = true
+caret_blink_interval = 0.5
+
+[connection signal="text_submitted" from="VBoxContainer/LineEdit" to="." method="_on_line_edit_text_submitted"]

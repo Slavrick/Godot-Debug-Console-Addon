@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://bwp1gah0l26ph"]
+
+[ext_resource type="Texture2D" uid="uid://cgal2kafi8p2t" path="res://icon.svg" id="1_iqmm0"]
+
+[node name="Container" type="CenterContainer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -241.0
+offset_top = -207.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 2
+
+[node name="Icon" type="Sprite2D" parent="Control"]
+texture = ExtResource("1_iqmm0")
