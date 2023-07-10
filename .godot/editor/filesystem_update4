@@ -1,4 +1,4 @@
-res://root.tscn
-res://addons/debug_console/console.gd
-res://addons/debug_console/scripts/example.gd
 res://addons/debug_console/debug_console.tscn
+res://root.tscn
+res://addons/debug_console/debug_console.gd
+res://addons/debug_console/console.gd

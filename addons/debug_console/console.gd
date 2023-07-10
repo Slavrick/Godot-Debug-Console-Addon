@@ -56,7 +56,7 @@ func _init():
 	if not InputMap.has_action("open_debug_console"):
 		InputMap.add_action("open_debug_console")
 		var event := InputEventKey.new()
-		event.keycode = KEY_QUOTELEFT
+		event.keycode = KEY_F3
 		InputMap.action_add_event("open_debug_console",event)
 
 func _ready():
