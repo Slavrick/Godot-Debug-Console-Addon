@@ -93,6 +93,7 @@ func set_properties():
 	$VBoxContainer/ScrollContainer/RichTextLabel.add_theme_font_size_override("normal_font_size",text_size)
 
 func show_console():
+	$VBoxContainer/LineEdit.grab_focus()
 	show()
 
 func hide_console():
